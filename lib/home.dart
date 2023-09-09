@@ -24,7 +24,11 @@ class _HomeState extends State<Home> {
       guide.showMaskGuide(
         context,
         [_keyOne, _keyTwo],
-        [MaskGuideMouldList(), MaskGuideMouldStar(context: context)],
+        [
+          MaskGuideMouldList(context: context),
+          MaskGuideMouldStar(context: context),
+        ],
+        backgroundColor: Colors.black.withOpacity(0.8),
       );
     });
   }

@@ -3,22 +3,27 @@ import 'package:flutter_app_guide/guide/mask_guide_view.dart';
 import 'package:flutter_app_guide/guide/mould/mask_guide_mould.dart';
 
 class MaskGuide {
-
   OverlayEntry? overlayEntry;
 
   /// 展示蒙层的方法
   /// [Params] 上下文对象、需要展示的控件的keys
-  void showMaskGuide(BuildContext context, List<GlobalKey> keys, List<MaskGuideMould> moulds) {
+  void showMaskGuide(
+    BuildContext context,
+    List<GlobalKey> keys,
+    List<MaskGuideMould> moulds, {
+    Color? backgroundColor,
+  }) {
     var overlay = OverlayEntry(
       builder: (context) {
         return MaskGuideView(
           keys: keys,
           moulds: moulds,
+          backgroundColor: backgroundColor,
           doneCallBack: () => dismissMaskGuide(),
         );
       },
     );
-    Overlay.of(context)?.insert(overlay);
+    Overlay.of(context).insert(overlay);
     //
     overlayEntry = overlay;
   }

@@ -5,12 +5,14 @@ import 'package:flutter_app_guide/guide/mould/mask_guide_mould.dart';
 class MaskGuideView extends StatefulWidget {
   final List<GlobalKey> keys;
   final List<MaskGuideMould> moulds;
+  final Color? backgroundColor;
   final Function? doneCallBack;
 
   const MaskGuideView({
     Key? key,
     required this.keys,
     required this.moulds,
+    this.backgroundColor,
     this.doneCallBack,
   }) : super(key: key);
 
@@ -43,7 +45,7 @@ class _MaskGuideViewState extends State<MaskGuideView> {
             ColorFiltered(
               // 源图像，使用srcOut
               colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5),
+                widget.backgroundColor ?? Colors.black.withOpacity(0.5),
                 BlendMode.srcOut,
               ),
               child: Stack(
